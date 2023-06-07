@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --montserrat: url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+    --primary-dark: #006ecc;
+    --primary-light: #33a1ff;
+    --secondary-dark: #d3ddee;
+    --secondary-light: #83888a;
+    --success-dark: #3cb690;
+    --success-light: #82d6bc;
+    --info-dark: #1d9fff;
+    --info-light: #83cbff;
+    --warning-light: #ffad0a;
+    --warning-dark: #ffcf70;
+    --danger-dark: #ee283c;
+    --danger-light: #f68692;
+    --light-dark: #cdd6e6;
+    --light-light: white;
+    --dark-dark: #0a081f;
+    --dark-light: #241e6f;
+    --base-gradient: linear-gradient(-96.34deg, #5163fd 0%, #2b3dda 100%);
+}
+
+.primary-button {
+    background: var(--primary-light);
+    opacity: 0.9;
+}
+
+.primary-button:hover {
+    opacity: 1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h5 {
+    font-size: 1.25rem;
+    color: black;
+}
+
+body {
+    font-family: var(--montserrat), sans-serif;
+    font-weight: 600;
+}
+
+.container-fluid {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    border: 1px solid #E2E1DD;
+    border-radius: 24px;
+    transition: all .2s ease;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.21);
+}
+
+.card-header {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding: 35px 40px;
+    background-color: transparent;
+}
+
+.logo {
+    font-size: 21px;
+    font-style: normal;
+    margin-right: 10px;
+}
+
+.card-body {
+    min-height: 1px;
+    padding: 40px;
+    color: #000000cc;
+    flex: 1 1 auto;
+}
+
+.wey-auto {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.input-group {
+    border-radius: 0.5rem;
+    border: solid 1px rgba(131, 131, 131, 0.5);
+}
+
+.input-group input {
+    background: none;
+    padding: 5px 10px;
+}
+
+.input-group button {
+    border-left: solid 1px rgba(131, 131, 131, 0.5);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 5px 0 var(--info-light), 0 0 2px 0 var(--info-light) inset;
+    opacity: 1;
+}
