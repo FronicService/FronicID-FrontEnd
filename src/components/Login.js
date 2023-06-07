@@ -19,14 +19,21 @@ async function loginTry(event) {
         });
         const data = await response.json();
 
-        console.log(response)
-        console.log(data)
-
         if (!response.ok) {
             serverDied.current.style.display = "block";
             if (data != null) {
 
                 serverDied.current.innerHTML = data.message;
+
+                data.errors.forEach(i => {
+                    if (i.path === "password") {
+                        event.target.password.parentElement.style.borderColor = "rgba(255, 0, 0, 0.7)";
+                        event.target.password.parentElement.style.boxShadow = "0 0 3px 0 rgba(255, 0, 0, 0.5) inset, 0 0 3px 0 rgba(255, 0, 0, 0.5)";
+                    } else if (i.path === "login") {
+                        event.target.username.parentElement.style.borderColor = "rgba(255, 0, 0, 0.7)";
+                        event.target.username.parentElement.style.boxShadow = "0 0 3px 0 rgba(255, 0, 0, 0.5) inset, 0 0 3px 0 rgba(255, 0, 0, 0.5)";
+                    }
+                })
 
             } else {
                 serverDied.current.innerHTML = "Сервер не отвечает.. Повторите попытку позже";
@@ -76,13 +83,16 @@ function Login() {
                         <div className={""}>
                             <div>
                                 <form onSubmit={login}>
+                                    <div className="text-center mb-3" role="alert" style={{display: "none"}} ref={serverDied}>
+                                        Сервер не отвечает.. Повторите попытку позже
+                                    </div>
                                     <div className="input-group mb-3 w-full flex">
                                         <input type="text" className="form-control w-full ease-in duration-150 opacity-80" placeholder="Почта или логин"
-                                               aria-label="Почта или логин" name={"username"}/>
+                                               aria-label="Почта или логин" name={"username"} onFocus={(event) => event.target.parentElement.removeAttribute('style')}/>
                                     </div>
                                     <div className="input-group w-full flex mb-0.5">
                                         <input type={showPassword ? "text" : "password"} className="form-control w-11/12 ease-in-out duration-150 opacity-80" placeholder="Пароль"
-                                               aria-label="Пароль" name={"password"}/>
+                                               aria-label="Пароль" name={"password"} onFocus={(event) => event.target.parentElement.removeAttribute('style')}/>
                                             <button className="btn btn-outline-secondary w-1/12" type="button" onClick={() => {setPasswordState(showPassword => !showPassword)}}
                                                     id="button-addon2"><img className={"w-3/5 h-3/5 ml-2"} src={showPassword ? hide : show} alt={"show"}/>
                                             </button>
@@ -113,10 +123,6 @@ function Login() {
                                         <a className="text-warning ml-3 hover:underline" id="create-account-button"
                                            href="мышка" style={{color: "var(--warning-light)"}}>Создать</a>
                                     </p>
-
-                                    <div className="text-center mt-1" role="alert" style={{display: "none"}} ref={serverDied}>
-                                        Сервер не отвечает.. Повторите попытку позже
-                                    </div>
                                 </form>
                             </div>
                         </div>
