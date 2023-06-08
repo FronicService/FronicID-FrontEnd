@@ -4,8 +4,6 @@ import show from '../img/show.svg'
 import hide from '../img/hide.svg'
 import discord from '../img/discord-icon.svg'
 import google from '../img/google-icon.svg'
-import axios, {Axios} from "axios";
-import async from "async";
 
 async function loginTry(event) {
     event.preventDefault();
@@ -25,16 +23,17 @@ async function loginTry(event) {
 
                 serverDied.current.innerHTML = data.message;
 
-                data.errors.forEach(i => {
-                    if (i.path === "password") {
-                        event.target.password.parentElement.style.borderColor = "rgba(255, 0, 0, 0.7)";
-                        event.target.password.parentElement.style.boxShadow = "0 0 3px 0 rgba(255, 0, 0, 0.5) inset, 0 0 3px 0 rgba(255, 0, 0, 0.5)";
-                    } else if (i.path === "login") {
-                        event.target.username.parentElement.style.borderColor = "rgba(255, 0, 0, 0.7)";
-                        event.target.username.parentElement.style.boxShadow = "0 0 3px 0 rgba(255, 0, 0, 0.5) inset, 0 0 3px 0 rgba(255, 0, 0, 0.5)";
-                    }
-                })
-
+                if (data.errors != null) {
+                    data.errors.forEach(i => {
+                        if (i.path === "password") {
+                            event.target.password.parentElement.style.borderColor = "rgba(255, 0, 0, 0.7)";
+                            event.target.password.parentElement.style.boxShadow = "0 0 3px 0 rgba(255, 0, 0, 0.5) inset, 0 0 3px 0 rgba(255, 0, 0, 0.5)";
+                        } else if (i.path === "login") {
+                            event.target.username.parentElement.style.borderColor = "rgba(255, 0, 0, 0.7)";
+                            event.target.username.parentElement.style.boxShadow = "0 0 3px 0 rgba(255, 0, 0, 0.5) inset, 0 0 3px 0 rgba(255, 0, 0, 0.5)";
+                        }
+                    })
+                }
             } else {
                 serverDied.current.innerHTML = "Сервер не отвечает.. Повторите попытку позже";
             }
@@ -60,7 +59,7 @@ function Login() {
     return (
       <div className={"h-full container-fluid"}>
         <div className={"h-full justify-center row"}>
-            <div className={"py-5 flex"}>
+            <div className={"py-5 flex xl:3/12 xl:w-4/12 lg:w-5/12 md:w-7/12 sm:w-11/12"}>
                 <div className={"card wey-auto w-full overflow-hidden mt-auto mb-auto"}>
                     <div className={"flex items-center card-header"}>
                         <a href="https://id.fronic.ru" target="_blank">
