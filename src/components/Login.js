@@ -13,7 +13,11 @@ async function loginTry(event) {
         const response = await fetch('http://91.210.170.142:5000/api/auth/signin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ login: event.target.username.value, password: event.target.password.value })
+            body: JSON.stringify({
+                login: event.target.username.value,
+                password: event.target.password.value,
+                key: "801a442a-e643-4ee8-90f8-2282e98df862"
+            })
         });
         const data = await response.json();
 
@@ -59,22 +63,23 @@ function Login() {
     return (
       <div className={"h-full container-fluid"}>
         <div className={"h-full justify-center row"}>
-            <div className={"py-5 flex xl:3/12 xl:w-4/12 lg:w-5/12 md:w-7/12 sm:w-11/12"}>
-                <div className={"card wey-auto w-full overflow-hidden mt-auto mb-auto"}>
-                    <div className={"flex items-center card-header"}>
+            <div className={"py-5 max-sm:p-0 flex xl:3/12 xl:w-4/12 lg:w-5/12 md:w-7/12 sm:w-11/12"}>
+                <div className={"card wey-auto w-full overflow-hidden mt-auto mb-auto "}>
+                    <div className={"flex max-sm:flex-col items-center card-header max-sm:pb-0"}>
                         <a href="https://id.fronic.ru" target="_blank">
                             <div className={"flex items-center"}>
                                 <h5 className={"logo"}>Fronic</h5>
                                 <img src={id} alt={"id"}/>
                             </div>
                         </a>
-                        <svg className={"mx-3"} width="1" height="31" viewBox="0 0 1 31" fill="none"
+                        <svg className={"mx-3 max-sm:hidden"} width="1" height="31" viewBox="0 0 1 31" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <rect width="1" height="31" fill="#82817D"></rect>
                         </svg>
-                        <p className={"mb-0 leading-tight text-sm text-stone-600 font-normal"}> Единый аккаунт для одной экосистемы <br/> и бла бла бла </p>
+                        <div className={"w-full h-1 bg-gray-100 rounded-lg my-2 sm:hidden"}/>
+                        <p className={"mb-0 leading-tight text-sm text-stone-600 font-normal max-sm:text-center max-sm:font-medium"}> Единый аккаунт для одной экосистемы</p>
                     </div>
-                    <div className={"card-body mt-5"}>
+                    <div className={"card-body mt-5 max-sm:mt-0"}>
                         <h5 className={"uppercase mb-4 font-semibold text-2xl"}>
                             Вход в аккаунт
                         </h5>
@@ -92,13 +97,13 @@ function Login() {
                                     <div className="input-group w-full flex mb-0.5">
                                         <input type={showPassword ? "text" : "password"} className="form-control w-11/12 ease-in-out duration-150 opacity-80" placeholder="Пароль"
                                                aria-label="Пароль" name={"password"} onFocus={(event) => event.target.parentElement.removeAttribute('style')}/>
-                                            <button className="btn btn-outline-secondary w-1/12" type="button" onClick={() => {setPasswordState(showPassword => !showPassword)}}
-                                                    id="button-addon2"><img className={"w-3/5 h-3/5 ml-2"} src={showPassword ? hide : show} alt={"show"}/>
+                                            <button className="btn btn-outline-secondary w-1/12 max-sm:w-8 flex items-center justify-center" type="button" onClick={() => {setPasswordState(showPassword => !showPassword)}}
+                                                    id="button-addon2"><img className={"w-5 h-5"} src={showPassword ? hide : show} alt={"show"}/>
                                             </button>
                                     </div>
                                     <a href={"вы нашли мышку сасиску"} className={"opacity-90 hover:opacity-100 font-normal font-bold"} style={{color: "var(--secondary-light)"}}>Забыли пароль?</a>
 
-                                    <button style={{background: "var(--base-gradient)"}} className="mt-4 btn primary-button w-full rounded-lg p-2 text-white uppercase font-bold ease-in duration-100">Войти</button>
+                                    <button style={{background: "var(--base-gradient)"}} className="h-12 mt-4 btn primary-button w-full rounded-lg p-2 text-white uppercase font-bold ease-in duration-100">Войти</button>
 
                                     <div className={"w-full h-1 bg-gray-100 rounded-lg my-4"}/>
 
