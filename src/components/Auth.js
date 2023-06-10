@@ -4,8 +4,10 @@ import Login from "./Login";
 import Logo from "./auth/Logo";
 
 export async function authTry(data, event) {
+    Object.keys(data).forEach(i => {
+        data[i] = data[i].current.value;
+    })
     event.preventDefault();
-    console.log(confirm)
     confirm.current.disabled = true;
     confirm.current.children[0].style.display = "none";
     confirm.current.children[1].style.display = "inline-block";

@@ -12,13 +12,14 @@ import Line from "./auth/Line";
 function Login() {
     let [showPassword, setPasswordState] = React.useState(false);
 
+    const username = React.useRef(null);
+    const password = React.useRef(null);
+
     const data = {
-        login: "123",
-        password: "123"
+        login: username,
+        password: username
     }
-
     const login = authTry.bind(this, data);
-
     return (
 <>
     <h5 className={"uppercase mb-4 font-semibold text-2xl"}>
@@ -28,11 +29,11 @@ function Login() {
     <form onSubmit={login}>
         <ResponseMessage />
         <div className="input-group mb-3 w-full flex">
-            <input type="text" className="form-control w-full ease-in duration-150 opacity-80" placeholder="Почта или логин"
+            <input ref={username} type="text" className="form-control w-full ease-in duration-150 opacity-80" placeholder="Почта или логин"
                    aria-label="Почта или логин" name={"username"} onFocus={(event) => event.target.parentElement.removeAttribute('style')}/>
         </div>
         <div className="input-group w-full flex mb-0.5">
-            <input type={showPassword ? "text" : "password"} className="form-control w-11/12 ease-in-out duration-150 opacity-80" placeholder="Пароль"
+            <input ref={password} type={showPassword ? "text" : "password"} className="form-control w-11/12 ease-in-out duration-150 opacity-80" placeholder="Пароль"
                    aria-label="Пароль" name={"password"} onFocus={(event) => event.target.parentElement.removeAttribute('style')}/>
             <button className="btn btn-outline-secondary w-1/12 max-sm:w-8 flex items-center justify-center" type="button" onClick={() => {setPasswordState(showPassword => !showPassword)}}
                     id="button-addon2"><img className={"w-5 h-5"} src={showPassword ? hide : show} alt={"show"}/>
