@@ -7,7 +7,7 @@ import LoginQuestion from "./auth/LoginQuestion";
 function Register() {
     return (
 <>
-    <h5 className={"uppercase mb-4 font-semibold text-2xl"}>
+    <h5 className={"uppercase mb-4 font-semibolsd text-2xl"}>
         Cоздать аккаунт
     </h5>
 
