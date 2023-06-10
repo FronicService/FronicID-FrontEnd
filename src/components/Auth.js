@@ -4,12 +4,14 @@ import Logo from "./auth/Logo";
 import Register from "./Register";
 import {Navigate, Route, Routes, useParams} from "react-router-dom";
 import Login from "./Login";
+import Mail from "./auth/Mail";
 
-export async function authTry(data, event) {
-    Object.keys(data).forEach(i => {
-        data[i] = data[i].current.value;
-    })
+export async function authTry(data_, url, event) {
     event.preventDefault();
+    let data = {};
+    Object.keys(data_).forEach(i => {
+        Object.assign(data, { [i]: data_[i].current.value})
+    })
     confirm.current.disabled = true;
     confirm.current.children[0].style.display = "none";
     confirm.current.children[1].style.display = "inline-block";
@@ -18,7 +20,7 @@ export async function authTry(data, event) {
 
     const sendBody = JSON.stringify(data);
     try {
-        const response = await fetch('https://id.api.fronic.ru/api/auth/signin', {
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -38,13 +40,12 @@ export async function authTry(data, event) {
 
                 if (data.errors != null) {
                     data.errors.forEach(i => {
-                        if (i.path === "password") {
-                            event.target.password.parentElement.style.borderColor = "rgba(255, 0, 0, 0.7)";
-                            event.target.password.parentElement.style.boxShadow = "0 0 3px 0 rgba(255, 0, 0, 0.5) inset, 0 0 3px 0 rgba(255, 0, 0, 0.5)";
-                        } else if (i.path === "login") {
-                            event.target.username.parentElement.style.borderColor = "rgba(255, 0, 0, 0.7)";
-                            event.target.username.parentElement.style.boxShadow = "0 0 3px 0 rgba(255, 0, 0, 0.5) inset, 0 0 3px 0 rgba(255, 0, 0, 0.5)";
-                        }
+                        Object.keys(data_).forEach(ii => {
+                            if (i.path === ii) {
+                                data_[ii].current.parentElement.style.borderColor = "rgba(255, 0, 0, 0.7)";
+                                data_[ii].current.parentElement.style.boxShadow = "0 0 3px 0 rgba(255, 0, 0, 0.5) inset, 0 0 3px 0 rgba(255, 0, 0, 0.5)";
+                            }
+                        })
                     })
                 }
             } else {
@@ -71,7 +72,6 @@ export async function authTry(data, event) {
         }, 1000);
 
     }
-
 }
 
 export let serverDied = React.createContext(React.createRef(null));
@@ -85,8 +85,13 @@ function Auth() {
             </Routes>
         )
     }
+
+    const getDiscord_URL = new XMLHttpRequest();
+    getDiscord_URL.open("GET", "https://id.api.fronic.ru/api/auth/discord/link", false)
+    getDiscord_URL.send(null)
     return (
         <>
+            {routeParams["AuthType"] === "discord" ? <Navigate to={window.location.replace(JSON.parse(getDiscord_URL.response)["link"])}/> : null}
             <div className={"h-full container-fluid"}>
                 <div className={"h-full justify-center row"}>
                     <div className={"py-5 max-sm:p-0 flex xl:3/12 xl:w-4/12 lg:w-5/12 md:w-7/12 sm:w-11/12"}>
@@ -95,6 +100,7 @@ function Auth() {
                             <div className={"card-body mt-5 max-sm:mt-0"}>
                                 {routeParams["AuthType"] === "signin" ? <Login /> : null}
                                 {routeParams["AuthType"] === "signup" ? <Register /> : null}
+                                {routeParams["AuthType"] === "mail" ? <Mail /> : null}
                             </div>
                         </div>
                     </div>

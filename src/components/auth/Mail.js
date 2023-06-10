@@ -1,36 +1,39 @@
 import React from 'react';
-import show from '../img/show.svg'
-import hide from '../img/hide.svg'
-import CreateAccountQuestion from "./auth/CreateAccountQuestion";
-import LoginWith from "./auth/LoginWith";
-import ForgotPassword from "./auth/ForgotPassword";
-import {authTry, confirm} from "./Auth"
-import '../css/spinner.css'
-import ResponseMessage from "./auth/ResponseMessage";
-import Line from "./auth/Line";
+import {authTry, confirm} from "../Auth"
+import '../../css/spinner.css'
+import ResponseMessage from "./ResponseMessage";
+import LoginQuestion from "./LoginQuestion";
+import hide from "../../img/hide.svg";
+import show from "../../img/show.svg";
 
-function Login() {
+function Mail() {
     let [showPassword, setPasswordState] = React.useState(false);
 
-    const username = React.useRef(null);
+    const name = React.useRef(null);
+    const mail = React.useRef(null);
     const password = React.useRef(null);
 
     const data = {
-        login: username,
+        name: name,
+        email: mail,
         password: password
     }
-    const login = authTry.bind(this, data, 'https://id.api.fronic.ru/api/auth/signin');
+    const register = authTry.bind(this, data, 'https://id.api.fronic.ru/api/auth/signup');
     return (
 <>
     <h5 className={"uppercase mb-4 font-semibold text-2xl"}>
-        Вход в аккаунт
+        Cоздать аккаунт
     </h5>
 
-    <form onSubmit={login}>
+    <form onSubmit={register}>
         <ResponseMessage />
         <div className="input-group mb-3 w-full flex">
-            <input ref={username} type="text" className="form-control w-full ease-in duration-150 opacity-80" placeholder="Почта или логин"
-                   aria-label="Почта или логин" name={"username"} onFocus={(event) => event.target.parentElement.removeAttribute('style')}/>
+            <input ref={name} type="text" className="form-control w-full ease-in duration-150 opacity-80" placeholder="Имя"
+                   aria-label="Имя" name={"username"} onFocus={(event) => event.target.parentElement.removeAttribute('style')}/>
+        </div>
+        <div className="input-group mb-3 w-full flex">
+            <input ref={mail} type="text" className="form-control w-full ease-in duration-150 opacity-80" placeholder="Почта"
+                   aria-label="Почта" name={"username"} onFocus={(event) => event.target.parentElement.removeAttribute('style')}/>
         </div>
         <div className="input-group w-full flex mb-0.5">
             <input ref={password} type={showPassword ? "text" : "password"} className="form-control w-11/12 ease-in-out duration-150 opacity-80" placeholder="Пароль"
@@ -39,21 +42,16 @@ function Login() {
                     id="button-addon2"><img className={"w-5 h-5"} src={showPassword ? hide : show} alt={"show"}/>
             </button>
         </div>
-        <ForgotPassword />
 
         <button style={{background: "var(--base-gradient)"}} className="h-12 mt-4 btn primary-button w-full rounded-lg p-2 text-white uppercase font-bold ease-in duration-100 disabled:opacity-50" ref={confirm}>
-            <p>Войти</p>
+            <p>Подтвердить</p>
             <div className="lds-ellipsis" role="status" style={{display: "none"}}><div/><div/><div/></div>
         </button>
 
-        <Line />
-
-        <LoginWith />
-
-        <CreateAccountQuestion />
+        <LoginQuestion/>
     </form>
 </>
     )
 }
 
-export default Login;
+export default Mail;
