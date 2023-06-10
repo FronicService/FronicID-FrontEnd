@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/spinner.css'
-import Login from "./Login";
 import Logo from "./auth/Logo";
+import Register from "./Register";
 
 export async function authTry(data, event) {
     Object.keys(data).forEach(i => {
@@ -83,7 +83,7 @@ function Auth() {
                     <div className={"card wey-auto w-full overflow-hidden mt-auto mb-auto max-sm:mt-16"}>
                         <Logo />
                         <div className={"card-body mt-5 max-sm:mt-0"}>
-                            <Login />
+                            <Register />
                         </div>
                     </div>
                 </div>
