@@ -5,7 +5,7 @@ class Logo extends React.Component {
     render() {
         return (
             <div className={"flex max-sm:flex-col items-center card-header max-sm:pb-0"}>
-                <a href="https://id.fronic.ru" target="_blank" rel="noreferrer">
+                <a href="/" target="_blank" rel="noreferrer">
                     <div className={"flex items-center"}>
                         <h5 className={"logo"}>Fronic</h5>
                         <img src={id} alt={"id"}/>

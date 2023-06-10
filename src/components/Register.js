@@ -1,8 +1,8 @@
 import React from 'react';
-import CreateAccountQuestion from "./auth/CreateAccountQuestion";
 import LoginWith from "./auth/LoginWith";
 import '../css/spinner.css'
 import ResponseMessage from "./auth/ResponseMessage";
+import LoginQuestion from "./auth/LoginQuestion";
 
 function Register() {
     return (
@@ -16,7 +16,7 @@ function Register() {
 
         <LoginWith />
 
-        <CreateAccountQuestion />
+        <LoginQuestion />
     </form>
 </>
     )
