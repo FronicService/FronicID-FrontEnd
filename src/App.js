@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from './components/Login';
+import Auth from "./components/Auth";
 
 class App extends React.Component {
     render() {
         return (
             <main>
-                <Login />
+                <Auth />
             </main>
         )
     }
