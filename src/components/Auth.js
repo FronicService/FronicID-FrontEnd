@@ -5,8 +5,9 @@ import Register from "./Register";
 import {Navigate, Route, Routes, useParams} from "react-router-dom";
 import Login from "./Login";
 import Mail from "./auth/Mail";
+import DiscordBinding from "./DiscordBinding";
 
-export async function authTry(data_, url, event) {
+export async function authTry(data_, url, redirect, event) {
     event.preventDefault();
     let data = {};
     Object.keys(data_).forEach(i => {
@@ -56,7 +57,7 @@ export async function authTry(data_, url, event) {
             }
         } else {
             // После входа
-            serverDied.current.innerHTML = "Вы вошли!";
+            serverDied.current.innerHTML = "УСПЕШНО!";
             serverDied.current.style.display = "block";
             confirm.current.children[1].style.display = "none";
             confirm.current.children[0].style.display = "inline-block";
@@ -81,7 +82,7 @@ function Auth() {
     if (Object.keys(routeParams).length === 0) {
         return (
             <Routes>
-                <Route index element={<Navigate to={"signup"}/> }/>
+                <Route index element={<Navigate to={"signin"}/> }/>
             </Routes>
         )
     }
@@ -91,7 +92,6 @@ function Auth() {
     getDiscord_URL.send(null)
     return (
         <>
-            {routeParams["AuthType"] === "discord" ? <Navigate to={window.location.replace(JSON.parse(getDiscord_URL.response)["link"])}/> : null}
             <div className={"h-full container-fluid"}>
                 <div className={"h-full justify-center row"}>
                     <div className={"py-5 max-sm:p-0 flex xl:3/12 xl:w-4/12 lg:w-5/12 md:w-7/12 sm:w-11/12"}>
@@ -101,6 +101,7 @@ function Auth() {
                                 {routeParams["AuthType"] === "signin" ? <Login /> : null}
                                 {routeParams["AuthType"] === "signup" ? <Register /> : null}
                                 {routeParams["AuthType"] === "mail" ? <Mail /> : null}
+                                {routeParams["AuthType"] === "discord" ? <DiscordBinding /> : null}
                             </div>
                         </div>
                     </div>

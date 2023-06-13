@@ -7,7 +7,7 @@ import ForgotPassword from "./auth/ForgotPassword";
 import {authTry, confirm} from "./Auth"
 import '../css/spinner.css'
 import ResponseMessage from "./auth/ResponseMessage";
-import Line from "./auth/Line";
+import Line from "./Line";
 
 function Login() {
     let [showPassword, setPasswordState] = React.useState(false);
@@ -19,7 +19,7 @@ function Login() {
         login: username,
         password: password
     }
-    const login = authTry.bind(this, data, 'https://id.api.fronic.ru/api/auth/signin');
+    const login = authTry.bind(this, data, 'https://id.api.fronic.ru/api/auth/signin', 'finish_login');
     return (
 <>
     <h5 className={"uppercase mb-4 font-semibold text-2xl"}>

@@ -1,8 +1,8 @@
 import React from 'react';
-import LoginWith from "./auth/LoginWith";
 import '../css/spinner.css'
 import ResponseMessage from "./auth/ResponseMessage";
 import LoginQuestion from "./auth/LoginQuestion";
+import RegisterWith from "./auth/RegisterWith";
 
 function Register() {
     return (
@@ -14,7 +14,7 @@ function Register() {
     <form>
         <ResponseMessage />
 
-        <LoginWith />
+        <RegisterWith />
 
         <LoginQuestion />
     </form>

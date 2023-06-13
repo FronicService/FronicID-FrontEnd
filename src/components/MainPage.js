@@ -7,6 +7,8 @@ function MainPage() {
             А нету тут нифига ещё.
             <br/>
             <a href={"/auth"} className={"text-blue-500 hover:text-blue-700 ease-in duration-100"}>/auth</a>
+            <br/>
+            <a href={"/cabinet"} className={"text-blue-500 hover:text-blue-700 ease-in duration-100"}>/cabinet</a>
         </div>
     )
 }

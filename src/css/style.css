@@ -110,3 +110,7 @@ input:focus {
     box-shadow: 0 0 5px 0 var(--info-light), 0 0 2px 0 var(--info-light) inset;
     opacity: 1;
 }
+
+.disabled {
+    opacity: 0.6;
+}

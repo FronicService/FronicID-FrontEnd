@@ -18,7 +18,7 @@ function Mail() {
         email: mail,
         password: password
     }
-    const register = authTry.bind(this, data, 'https://id.api.fronic.ru/api/auth/signup');
+    const register = authTry.bind(this, data, 'https://id.api.fronic.ru/api/auth/signup', "finish_register_mail");
     return (
 <>
     <h5 className={"uppercase mb-4 font-semibold text-2xl"}>
