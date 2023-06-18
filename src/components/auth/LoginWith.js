@@ -6,7 +6,7 @@ class LoginWith extends React.Component {
     render() {
         return (
             <div className={""}>
-                <a href="https://discord.com/api/oauth2/authorize?client_id=1116040699498999819&redirect_uri=https%3A%2F%2Fid.api.fronic.ru%2Fapi%2Fauth%2Fdiscord%2Fsignin&response_type=code&scope=identify%20email"
+                <a href="https://discord.com/api/oauth2/authorize?client_id=1116040699498999819&redirect_uri=https%3A%2F%2Fid.api.fronic.ru%2Fapi%2Fuser%2Fauth%2Fservice%2Fdiscord%2Fsignin&response_type=code&scope=identify%20email"
                    className="btn flex mb-2 ml-0 items-center justify-center btn primary-button w-full rounded-lg p-2 text-white ease-in duration-100 h-12" style={{background: "#677cee"}}>
                     <img src={discord}
                          className="mr-2 w-5 h-5" alt={"discord"}/>
