@@ -9,10 +9,14 @@ import 'swiper/css/scrollbar';
 
 function Main() {
 
+    const swiperRef = React.useRef();
+    const swipeNext = React.useRef();
+    const swipePrev = React.useRef();
+
     return (
-        <div className={"my-36 flex justify-center"}>
-            <div className={"w-4/6 flex items-center justify-center h-52 gap-5"}>
-                <div className={"h-full"}>
+        <div className={"my-28 w-full flex justify-center"}>
+            <div className={"w-9/12 flex items-center justify-center h-80 gap-5"}>
+                <div className={"h-full flex flex-col justify-center"}>
                     <h1 className={"text-5xl font-bold "}>Один аккаунт <br/> для всех сервисов</h1>
                     <div
                         className="flex items-center justify-start mt-5">
@@ -26,25 +30,71 @@ function Main() {
                         </a>
                     </div>
                 </div>
+                <div>
+                    <button ref={swipePrev} className={"bg-gray-50 text-blue-500 shadow-md absolute z-10 w-10 h-10 rounded-full ease-in duration-100 opacity-85 hover:opacity-100 disabled:opacity-0"} onClick={() => swiperRef.current?.slidePrev()}>
+                        🡨
+                    </button>
+                </div>
                 <Swiper
-                    className={"h-full w-96"}
+                    className={"h-full card banner"}
                     modules={[Navigation, Pagination, Scrollbar, Autoplay]}
                     autoplay={{
                         delay: 4000,
                         disableOnInteraction: false,
                     }}
-                    centeredSlides={true}
+                    onBeforeInit={(swiper) => {
+                        swiperRef.current = swiper;
+                        swipePrev.current.disabled = true;
+                    }}
+                    onSlideChange={(swiper) => {
+                        swipeNext.current.disabled = swiper.isEnd;
+                        swipePrev.current.disabled = swiper.activeIndex === 0;
+                    }}
+                    centeredSlides
                     slidesPerView={1}
-                    navigation
-                    pagination={{ clickable: true }}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log('slide change')}
+                    pagination={{ clickable: true, dynamicBullets: true }}
                 >
-                    <SwiperSlide>Slide 1</SwiperSlide>
-                    <SwiperSlide>Slide 2</SwiperSlide>
-                    <SwiperSlide>Slide 3</SwiperSlide>
-                    <SwiperSlide>Slide 4</SwiperSlide>
+                    <SwiperSlide>
+                        <div className={"flex justify-center items-center h-full w-full"}>
+                            <div className="lds-ring">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div></SwiperSlide>
+                    <SwiperSlide><div className={"flex justify-center items-center h-full w-full"}>
+                        <div className="lds-ring">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div></SwiperSlide>
+                    <SwiperSlide><div className={"flex justify-center items-center h-full w-full"}>
+                        <div className="lds-ring">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div></SwiperSlide>
+                    <SwiperSlide><div className={"flex justify-center items-center h-full w-full"}>
+                        <div className="lds-ring">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div></SwiperSlide>
                 </Swiper>
+                <div className={"relative"}>
+                    <button ref={swipeNext} className={"bg-gray-50 text-blue-500 shadow-md absolute z-10 w-10 h-10 rounded-full right-0 ease-in duration-100 opacity-85 hover:opacity-100 disabled:opacity-0"} onClick={() => {
+                        swiperRef.current?.slideNext()
+                    }}>
+                        🡪
+                    </button>
+                </div>
             </div>
         </div>
     )

@@ -10,11 +10,11 @@ function Header() {
                 <div className={"w-9/12 flex items-center"}>
                     <MiniLogo />
                     <nav className={"items-center text-lg font-medium ml-10 md:flex max-md:hidden"}>
-                        <div><a href={"/"} className={"nav-a nav-a-selected"}>Абоба</a></div>
-                        <div><a href={"/"} className={"nav-a"}>Абоба</a></div>
-                        <div><a href={"/"} className={"nav-a"}>Абоба</a></div>
-                        <div><a href={"/"} className={"nav-a"}>Абоба</a></div>
-                        <div><a href={"/"} className={"nav-a"}>Абоба</a></div>
+                        <div><a href={"/"} className={"nav-a nav-a-selected"}>Главная</a></div>
+                        <div><a href={"/"} className={"nav-a"}>О проекте</a></div>
+                        <div><a href={"/"} className={"nav-a"}>Рецепт пельменей</a></div>
+                        <div><a href={"/"} className={"nav-a"}>Дать денег</a></div>
+                        <div><a href={"/"} className={"nav-a"}>РП С КРИСТАЛАМИ</a></div>
                     </nav>
                 </div>
                 <div className={"w-3/12 flex justify-end items-center"}>

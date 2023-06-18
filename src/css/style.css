@@ -116,6 +116,7 @@ input:focus {
 }
 
 .nav-a {
+    white-space: nowrap;
     transition: ease-in 0.2s;
     margin-right: 20px;
     opacity: 0.7;
@@ -130,4 +131,9 @@ input:focus {
 .nav-a-selected {
     border-bottom: var(--primary-light) 3px solid;
     opacity: 0.9;
+}
+
+.banner {
+    height: 300px;
+    width: 635px
 }
