@@ -19,7 +19,7 @@ function Login() {
         login: username,
         password: password
     }
-    const login = authTry.bind(this, data, 'https://id.api.fronic.ru/api/auth/signin', 'finish_login');
+    const login = authTry.bind(this, data, 'https://id.api.fronic.ru/api/user/auth/signin', 'finish_login');
     return (
 <>
     <h5 className={"uppercase mb-4 font-semibold text-2xl"}>

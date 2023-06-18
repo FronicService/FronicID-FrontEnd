@@ -86,10 +86,6 @@ function Auth() {
             </Routes>
         )
     }
-
-    const getDiscord_URL = new XMLHttpRequest();
-    getDiscord_URL.open("GET", "https://id.api.fronic.ru/api/auth/discord/link", false)
-    getDiscord_URL.send(null)
     return (
         <>
             <div className={"h-full container-fluid"}>
