@@ -4,7 +4,7 @@
 
 :root {
     --montserrat: url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
-    --primary-dark: #006ecc;
+    --primary-dark: #3297f3;
     --primary-light: #33a1ff;
     --secondary-dark: #d3ddee;
     --secondary-light: #83888a;
@@ -113,4 +113,21 @@ input:focus {
 
 .disabled {
     opacity: 0.6;
+}
+
+.nav-a {
+    transition: ease-in 0.2s;
+    margin-right: 20px;
+    opacity: 0.7;
+}
+
+.nav-a:hover {
+    margin-right: 20px;
+    opacity: 1;
+    border-bottom: var(--primary-dark) 3px solid;
+}
+
+.nav-a-selected {
+    border-bottom: var(--primary-light) 3px solid;
+    opacity: 0.9;
 }
