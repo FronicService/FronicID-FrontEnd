@@ -3,6 +3,7 @@ import Auth from "./components/Auth";
 import {Routes, Route} from "react-router-dom";
 import MainPage from "./components/MainPage";
 import Cabinet from "./components/Cabinet";
+import Admin from "./components/Admin";
 
 class App extends React.Component {
     render() {
@@ -16,6 +17,9 @@ class App extends React.Component {
                 </Route>
                 <Route path={"/cabinet"}>
                     <Route index element={<Cabinet />}/>
+                </Route>
+                <Route path={"/admin"}>
+                    <Route index element={<Admin />}/>
                 </Route>
             </Routes>
         )
