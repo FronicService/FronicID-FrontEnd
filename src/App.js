@@ -7,6 +7,9 @@ import Admin from "./components/Admin";
 
 class App extends React.Component {
     render() {
+        const xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", 'https://id.api.fronic.ru/api/user/session/', false );
+        xmlHttp.send( null );
         return (
             <Routes>
                 <Route path={"/"}>

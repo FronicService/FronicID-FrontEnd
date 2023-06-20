@@ -1,6 +1,5 @@
 import React from 'react';
-import servers from '../../img/servers.svg'
-import {Navigation, Pagination, Scrollbar, A11y, Autoplay} from 'swiper';
+import {Navigation, Pagination, Scrollbar, Autoplay} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -20,11 +19,11 @@ function Main() {
                     <h1 className={"text-5xl font-bold "}>Один аккаунт <br/> для всех сервисов</h1>
                     <div
                         className="flex items-center justify-start mt-5">
-                        <a href="#"
+                        <a href="/auth/signup"
                            className="btn flex mb-2 ml-0 items-center justify-center btn primary-button w-full rounded-lg p-2 text-white ease-in duration-100 h-12 bg-blue-500 w-64">
                             Создать аккаунт
                         </a>
-                        <a href="#"
+                        <a href="/auth/signin"
                            className="btn flex mb-2 ml-0 items-center justify-center btn primary-button w-full rounded-lg p-2 text-blue-600 ease-in duration-100 h-12 bg-blue-300 ml-5 w-52">
                             Войти
                         </a>
@@ -32,7 +31,7 @@ function Main() {
                 </div>
                 <div className={"flex items-center ml-24"}>
                     <div className={"relative"}>
-                        <button ref={swipePrev} className={"bg-gray-50 text-blue-500 shadow-md absolute z-10 w-10 h-10 -left-5 rounded-full ease-in duration-100 opacity-85 hover:opacity-100 disabled:opacity-0"} onClick={() => swiperRef.current?.slidePrev()}>
+                        <button ref={swipePrev} className={"bg-gray-50 text-blue-500 shadow-md absolute z-10 w-10 h-10 -left-5 rounded-full ease-in duration-100 opacity-85 hover:opacity-100 disabled:opacity-0 -top-5"} onClick={() => swiperRef.current?.slidePrev()}>
                             🡨
                         </button>
                     </div>
@@ -90,7 +89,7 @@ function Main() {
                         </div></SwiperSlide>
                     </Swiper>
                     <div className={"relative"}>
-                        <button ref={swipeNext} className={"bg-gray-50 text-blue-500 shadow-md absolute z-10 w-10 h-10 rounded-full -right-5 ease-in duration-100 opacity-85 hover:opacity-100 disabled:opacity-0"} onClick={() => {
+                        <button ref={swipeNext} className={"bg-gray-50 text-blue-500 shadow-md absolute z-10 w-10 h-10 rounded-full -right-5 ease-in duration-100 opacity-85 hover:opacity-100 disabled:opacity-0 -top-5"} onClick={() => {
                             swiperRef.current?.slideNext()
                         }}>
                             🡪
