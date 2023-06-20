@@ -1,13 +1,16 @@
 import React from 'react';
 import '../css/spinner.css'
-import {useParams} from "react-router-dom";
-import * as querystring from "querystring";
+import {Navigate, useLocation, useParams} from "react-router-dom";
+import Cookies from "js-cookie"
 
-function Auth(props) {
+function DiscordBinding(props) {
     const routeParams = useParams();
+    const routeSearch = useLocation().search;
 
     if (routeParams["BindType"] === "signin") {
-        console.log(querystring.parse(props.location.search))
+        const params = new URLSearchParams(routeSearch);
+        Cookies.set("session_id", params.get("session_id"))
+        Cookies.set("user_auth", params.get("user_auth"))
     }
     else if (routeParams["BindType"] === "register") {
 
@@ -19,9 +22,9 @@ function Auth(props) {
 
     return (
         <>
-
+            <Navigate to={"/cabinet"} />
         </>
     )
 }
 
-export default Auth
+export default DiscordBinding
