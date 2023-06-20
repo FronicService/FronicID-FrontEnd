@@ -1,40 +1,28 @@
 import React from 'react';
 import Cookies from "js-cookie"
 import {Navigate} from "react-router-dom";
-import async from "async";
+import axios from "axios";
 
-
-async function register() {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({
-        "user_auth": Cookies.get("user_auth")
-    });
-
-    const requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-    };
-
-    const response = await fetch("https://id.api.fronic.ru/api/user/control", {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: requestOptions
-    });
-    const data = await response.json();
-    console.log(data)
-}
 
 function Cabinet() {
     if (!Cookies.get("user_auth")) {
         return <Navigate to={"/"} />;
     }
-    register();
+
+    let data = JSON.stringify({
+        "user_auth": Cookies.get("user_auth")
+    });
+
+    axios.request({
+        method: "get",
+        maxBodyLength: Infinity,
+        url: "https://id.api.fronic.ru/api/user/control",
+        headers: {
+            "Content-Type": "application/json",
+            "user_auth": Cookies.get("user_auth")
+        },
+        data: data
+    }).then(r => {console.log(r)})
 
     return (
         <div>
