@@ -1,17 +1,16 @@
 import React from 'react';
 import '../css/spinner.css'
-import Logo from "./auth/Logo";
-import Register from "./Register";
-import {Navigate, Route, Routes, useParams} from "react-router-dom";
-import Login from "./Login";
-import Mail from "./auth/Mail";
+import {useParams} from "react-router-dom";
+import * as querystring from "querystring";
 
-function Auth() {
+function Auth(props) {
     const routeParams = useParams();
 
-    if (routeParams["BindType"] === "register") {
-        // Login
-        // ... Go to lk
+    if (routeParams["BindType"] === "signin") {
+        console.log(querystring.parse(props.location.search))
+    }
+    else if (routeParams["BindType"] === "register") {
+
     }
     else if (routeParams["BindType"] === "bind") {
         // Bind
