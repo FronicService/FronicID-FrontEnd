@@ -65,6 +65,7 @@ export async function authTry(data_, url, redirect, event) {
             confirm.current.disabled = false;
 
             Cookies.set("user_auth", data.auth.token)
+
         }
     } catch (e) {
         setTimeout(() => {
