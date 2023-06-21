@@ -6,10 +6,11 @@ import {Navigate, Route, Routes, useParams} from "react-router-dom";
 import Login from "./Login";
 import Mail from "./auth/Mail";
 import DiscordBinding from "./DiscordBinding";
+import Cookies from "js-cookie"
 
 export async function authTry(data_, url, redirect, event) {
     event.preventDefault();
-    let data = {};
+    let data = {session_id: Cookies.get("session_id")};
     Object.keys(data_).forEach(i => {
         Object.assign(data, { [i]: data_[i].current.value})
     })
@@ -62,6 +63,7 @@ export async function authTry(data_, url, redirect, event) {
             confirm.current.children[1].style.display = "none";
             confirm.current.children[0].style.display = "inline-block";
             confirm.current.disabled = false;
+
         }
     } catch (e) {
         setTimeout(() => {
