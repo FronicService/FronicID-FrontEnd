@@ -64,6 +64,8 @@ export async function authTry(data_, url, redirect, event) {
             confirm.current.children[0].style.display = "inline-block";
             confirm.current.disabled = false;
 
+            console.log(data.auth)
+            Cookies.set("user_auth", data.auth.token)
         }
     } catch (e) {
         setTimeout(() => {
